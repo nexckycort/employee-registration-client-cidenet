@@ -43,10 +43,10 @@ const Login = (): JSX.Element => {
         <h1>Login App</h1>
         {status === STATUS.ERROR && <Alert type="danger">{error.message}</Alert>}
         <div className="mb-3">
-          <Input {...email} required placeholder="name@example.com" />
+          <Input {...email} required className="form-control" placeholder="name@example.com" />
         </div>
         <div className="mb-3">
-          <Input {...password} required placeholder="******" />
+          <Input {...password} required className="form-control" placeholder="******" />
         </div>
         <div className="mb-2"></div>
         <Button type="submit" disabled={status === STATUS.PENDING}>

@@ -17,11 +17,7 @@ const useEmployee = () => {
     IDType: 0,
     identificationNumber: '',
     area: 0,
-    entryDate: '',
-    email: '',
-    state: '',
-    registrationDate: '',
-    updateDate: ''
+    entryDate: ''
   } as unknown as EmployeeDTO)
 
   const updateState = (e: React.ChangeEvent<HTMLInputElement>) => {

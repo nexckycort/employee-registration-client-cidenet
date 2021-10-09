@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 
-import { useAsync, useRouter } from 'infrastructure/ui/hooks'
 import { Alert, Button, Input } from 'infrastructure/ui/components/ui'
+import { useAsync, useRouter } from 'infrastructure/ui/hooks'
 import { STATUS } from 'infrastructure/ui/hooks/useAsync'
 import useEmployee from './hook/useEmployee'
+import useSelect from './hook/useSelect'
 
 const Employee = (): JSX.Element => {
   const { params } = useRouter()
@@ -12,6 +13,55 @@ const Employee = (): JSX.Element => {
   const [title, setTitle] = useState('')
 
   const { employee, updateState, newEmployee, getEmployee, updateEmployee, alert } = useEmployee()
+
+  const { Select: SelectCountry } = useSelect('Country', [
+    {
+      id: 1,
+      name: 'Colombia'
+    },
+    {
+      id: 2,
+      name: 'Estados Unidos'
+    }
+  ])
+
+  const { Select: SelectIDType } = useSelect('ID Type', [
+    {
+      id: 1,
+      name: 'Cédula de Ciudadanía'
+    }
+  ])
+
+  const { Select: SelectArea } = useSelect('Area', [
+    {
+      id: 3,
+      name: 'Operación'
+    },
+    {
+      id: 4,
+      name: 'Infraestructura'
+    },
+    {
+      id: 5,
+      name: 'Compras'
+    },
+    {
+      id: 2,
+      name: 'Financiera'
+    },
+    {
+      id: 1,
+      name: 'Administración'
+    },
+    {
+      id: 7,
+      name: 'Servicios Varios'
+    },
+    {
+      id: 8,
+      name: 'Talento Humano'
+    }
+  ])
 
   const newOrUpdateEmployeeAsync = async () => {
     let message!: string
@@ -74,14 +124,12 @@ const Employee = (): JSX.Element => {
         {/**/}
         <div className="col-3">
           <div className="mb-3">
-            <label className="form-label">Country</label>
-            <Input name="country" onChange={updateState} value={employee.country} type="text" className="form-control" placeholder="Nestor" />
+            <SelectCountry name="country" value={employee.country} onChange={updateState} />
           </div>
         </div>
         <div className="col-3">
           <div className="mb-3">
-            <label className="form-label">ID Type</label>
-            <Input name="IDType" onChange={updateState} value={employee.IDType} type="text" className="form-control" placeholder="Junior" />
+            <SelectIDType name="IDType" value={employee.IDType} onChange={updateState} />
           </div>
         </div>
         <div className="col-3">
@@ -92,8 +140,7 @@ const Employee = (): JSX.Element => {
         </div>
         <div className="col-3">
           <div className="mb-3">
-            <label className="form-label">Area</label>
-            <Input name="area" onChange={updateState} value={employee.area} type="text" className="form-control" placeholder="Infraestructura" />
+            <SelectArea name="area" value={employee.area} onChange={updateState} />
           </div>
         </div>
         {/**/}
