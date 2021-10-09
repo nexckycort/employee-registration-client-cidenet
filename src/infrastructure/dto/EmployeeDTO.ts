@@ -18,3 +18,20 @@ export interface Employee {
   registrationDate: string
   updateDate: string
 }
+
+export interface EmployeeDTO {
+  id: number
+  firstSurname: string
+  secondSurname: string
+  firstName: string
+  secondName?: any
+  country: number
+  IDType: number
+  identificationNumber: string
+  area: number
+  entryDate: string
+  email: string
+  state: string
+  registrationDate: string
+  updateDate: string
+}

@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import { Edit, Trash } from 'infrastructure/ui/components/ui/icons'
 import { Button } from 'infrastructure/ui/components/ui'
 import { Employee } from 'infrastructure/dto/EmployeeDTO'
+import { useRouter } from 'infrastructure/ui/hooks'
 
 interface Props {
   employees: Employee[]
@@ -12,6 +13,8 @@ interface Props {
 }
 
 const EmployeeTable: React.FC<Props> = ({ employees, handleRemoveEmployee }) => {
+  const router = useRouter()
+
   const removeEmployee = (id: number) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -55,7 +58,11 @@ const EmployeeTable: React.FC<Props> = ({ employees, handleRemoveEmployee }) => 
               <td>{email}</td>
               <td>{country}</td>
               <td>
-                <Button>
+                <Button
+                  onClick={() => {
+                    router.push(`/employee/${id}`)
+                  }}
+                >
                   <Edit width={20} height={20} />
                 </Button>
                 <Button

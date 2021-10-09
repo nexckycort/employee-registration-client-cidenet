@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { employeeService } from 'domain/services/employeeService'
-import { useAsync } from 'infrastructure/ui/hooks'
+import { useAsync, useRouter } from 'infrastructure/ui/hooks'
 import { Alert, Button, Loader } from 'infrastructure/ui/components/ui'
 import { STATUS } from 'infrastructure/ui/hooks/useAsync'
 import { PaginatedEmployeesDTO, Employee } from 'infrastructure/dto/EmployeeDTO'
@@ -11,6 +11,8 @@ import usePagination from './hook/usePagination'
 import Pagination from './components/Pagination'
 
 const Home: React.FC = () => {
+  const router = useRouter()
+
   const usePaginationHook = usePagination()
   const { actualPage, setTotalPages } = usePaginationHook
 
@@ -46,7 +48,15 @@ const Home: React.FC = () => {
   return (
     <div>
       <h1>
-        Employee Registration <Button color="success">New Employee</Button>
+        Employee Registration{' '}
+        <Button
+          onClick={() => {
+            router.push('/employee')
+          }}
+          color="success"
+        >
+          New Employee
+        </Button>
       </h1>
       {status === STATUS.ERROR && <Alert type="danger">{error.message}</Alert>}
       {employees.length > 0 ? (
