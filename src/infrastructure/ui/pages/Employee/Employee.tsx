@@ -4,64 +4,17 @@ import { Alert, Button, Input } from 'infrastructure/ui/components/ui'
 import { useAsync, useRouter } from 'infrastructure/ui/hooks'
 import { STATUS } from 'infrastructure/ui/hooks/useAsync'
 import useEmployee from './hook/useEmployee'
-import useSelect from './hook/useSelect'
+import useSearchInfoSelect from './hook/useSearchInfoSelect'
 
 const Employee = (): JSX.Element => {
   const { params } = useRouter()
   const { id } = params
 
+  const { SelectCountry, SelectIDType, SelectArea } = useSearchInfoSelect()
+
   const [title, setTitle] = useState('')
 
   const { employee, updateState, newEmployee, getEmployee, updateEmployee, alert } = useEmployee()
-
-  const { Select: SelectCountry } = useSelect('Country', [
-    {
-      id: 1,
-      name: 'Colombia'
-    },
-    {
-      id: 2,
-      name: 'Estados Unidos'
-    }
-  ])
-
-  const { Select: SelectIDType } = useSelect('ID Type', [
-    {
-      id: 1,
-      name: 'Cédula de Ciudadanía'
-    }
-  ])
-
-  const { Select: SelectArea } = useSelect('Area', [
-    {
-      id: 3,
-      name: 'Operación'
-    },
-    {
-      id: 4,
-      name: 'Infraestructura'
-    },
-    {
-      id: 5,
-      name: 'Compras'
-    },
-    {
-      id: 2,
-      name: 'Financiera'
-    },
-    {
-      id: 1,
-      name: 'Administración'
-    },
-    {
-      id: 7,
-      name: 'Servicios Varios'
-    },
-    {
-      id: 8,
-      name: 'Talento Humano'
-    }
-  ])
 
   const newOrUpdateEmployeeAsync = async () => {
     let message!: string

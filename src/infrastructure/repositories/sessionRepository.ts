@@ -22,7 +22,7 @@ export const sessionRepository = {
             Authorization: `Bearer ${token}`
           }
         : undefined
-    const result = await http.get<SessionDTO>('http://localhost:9000/api/v1.0/validate-token', {
+    const result = await http.get<SessionDTO>(apiV1.validateToken, {
       headers
     })
 

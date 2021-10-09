@@ -4,7 +4,7 @@ import { http } from 'infrastructure/lib'
 
 export const areaRepository = {
   getAll: async () => {
-    const result = await http.get<AreaDTO>(apiV1.employees)
+    const result = await http.get<AreaDTO[]>(apiV1.areas)
     return result
   }
 }
