@@ -38,7 +38,7 @@ const Login = (): JSX.Element => {
   }, [status])
 
   return (
-    <main className="center">
+    <main className="center-full">
       <form onSubmit={handleOnSubmit}>
         <h1>Login App</h1>
         {status === STATUS.ERROR && <Alert type="danger">{error.message}</Alert>}

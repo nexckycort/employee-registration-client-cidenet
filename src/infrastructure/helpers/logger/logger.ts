@@ -9,7 +9,7 @@ export const Logger = {
       console.debug(arg)
     })
   },
-  error: (error: Error | string = ''): void => {
+  error: (error: Error | string | unknown = ''): void => {
     console.error(error)
   }
 }

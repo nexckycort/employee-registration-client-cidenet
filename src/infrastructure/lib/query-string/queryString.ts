@@ -10,7 +10,7 @@ const queryString = {
       obj = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}', function (key, value) {
         return key === '' ? value : decodeURIComponent(value)
       })
-    } catch (error) {
+    } catch (error: any) {
       obj = {
         error: error.message
       }

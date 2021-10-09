@@ -46,7 +46,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <h1>
-        Employee Registration <Button color="success">Create Employee</Button>
+        Employee Registration <Button color="success">New Employee</Button>
       </h1>
       {status === STATUS.ERROR && <Alert type="danger">{error.message}</Alert>}
       {employees.length > 0 ? (
